@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" type="reset" />
+    </ion-buttons>
+    <ion-title>Gestión de citas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<app-formulario-citas (citaAgregada)="agregarCita($event)"></app-formulario-citas>
+
+<ion-list>
+  <ion-item *ngFor="let cita of citas">
+    <ion-label>
+      {{ cita.cita }}
+      <p style="text-align: right">
+        {{ cita.autor }}
+      </p>
+
+      <ion-button color="danger" fill="clear">
+        <ion-icon name="trash" slot="icon-only"></ion-icon>
+      </ion-button>
+      
+    </ion-label> 
+  </ion-item>  
+</ion-list>

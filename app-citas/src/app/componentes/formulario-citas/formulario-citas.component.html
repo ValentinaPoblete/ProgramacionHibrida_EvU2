@@ -1,0 +1,42 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Crea una nueva cita</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+
+    <form (ngSubmit)="agregarCita()" #citaForm="ngForm">
+      <ion-input
+      [(ngModel)]="nuevaCita.cita"
+      required="required"
+      minlength="5"
+      name="citaInput"
+      #citaInput="ngModel"
+      label="Cita" />
+      <div *ngIf="citaInput.invalid && citaInput.touched">
+        <ion-text color="danger">
+          <p *ngIf="citaInput.errors?.['required']">La cita es obligatoria.</p>
+          <p *ngIf="citaInput.errors?.['minlength']">La cita debe tener al menos 5 caracteres.</p>
+        </ion-text>
+      </div>
+
+      <ion-input 
+      [(ngModel)]="nuevaCita.autor"
+      required="required"
+      minlength="2"
+      name="autorInput"
+      #autorInput="ngModel"
+      label="Autor" />
+      <div *ngIf="autorInput.invalid && autorInput.touched">
+        <ion-text color="danger">
+          <p *ngIf="autorInput.errors?.['required']">El autor es obligatorio.</p>
+          <p *ngIf="autorInput.errors?.['minlength']">El autor debe tener al menos 2 caracteres.</p>
+        </ion-text>
+      </div>
+
+      <ion-button fill="clear" type="submit" [disabled]="citaForm.invalid">AGREGAR +</ion-button>
+    </form>
+
+  </ion-card-content>
+
+</ion-card>
